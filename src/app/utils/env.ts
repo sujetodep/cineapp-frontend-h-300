@@ -1,0 +1,1 @@
+export const API_REST = "http://localhost:4000/api/cinema/";

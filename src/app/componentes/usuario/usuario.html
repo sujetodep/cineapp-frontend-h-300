@@ -1,1 +1,14 @@
-<p>usuario works!</p>
+<form [formGroup]="form">
+    <h1>Crear usuario</h1>
+    <label>Nombre
+        <input type="text" formControlName="nombre" placeholder="Ingrese su nombre completo">
+    </label>
+    <label>Cuenta de correo
+        <input type="text" formControlName="correo" placeholder="Ingrese su cuenta de correo">
+    </label>
+    <label *ngIf="!sessionService.sesionIniciada">Contraseña
+        <input type="password" formControlName="contrasenia" placeholder="Ingrese su contraseña">
+    </label>
+
+    <input type="button" [disabled]="!form.valid" (click)="guardar()" value="Guardar">
+</form>

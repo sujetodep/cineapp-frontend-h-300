@@ -1,0 +1,47 @@
+form {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    border: 1px solid var(--dark);
+    border-radius: 20px;
+    padding: 24px;
+    background: var(--dark);
+
+    h1 {
+        color: var(--tertiary-contrast) !important;
+        margin-bottom: 12px;
+    }
+
+    label {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    input {
+        width: 100%;
+        margin: 2px;
+        border: 1px solid var(--light);
+        color: var(--dark) !important;
+        padding: 8px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        height: 48px;
+        border-radius: 5px;
+    }
+
+    input[type="button"] {
+        padding: 8px;
+        height: 64px;
+        border-radius: 15px;
+        margin-top: 32px;
+
+        &:hover:not(:disabled) {
+            background: var(--primary);
+            color: var(--primary-contrast);
+            cursor: pointer;
+        }
+    }
+}

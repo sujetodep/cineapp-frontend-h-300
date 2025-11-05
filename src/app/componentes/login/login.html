@@ -1,1 +1,11 @@
-<p>login works!</p>
+<form [formGroup]="form">
+    <h1>Iniciar sesión</h1>
+    <label>Cuenta de correo
+        <input type="text" formControlName="correo" placeholder="Ingrese su cuenta de correo">
+    </label>
+    <label>Contraseña
+        <input type="password" formControlName="contrasenia" placeholder="Ingrese su contraseña">
+    </label>
+
+    <input type="button" [disabled]="!form.valid" (click)="login()" value="Login">
+</form>

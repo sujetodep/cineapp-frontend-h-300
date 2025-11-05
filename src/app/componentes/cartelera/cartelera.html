@@ -1,1 +1,45 @@
-<p>cartelera works!</p>
+<section class="mt-5">
+    <h3>Categorías destacadas</h3>
+    <div class="d-flex justify-content-center gap-3 flex-wrap mt-3">
+        <ng-content *ngFor="let genero of listService.generos">
+            <button class="btn btn-outline-danger" onclick="filtrarCategoria('accion')"
+                title="{{genero.descripcion}}">{{genero.titulo}}</button>
+        </ng-content>
+    </div>
+
+    <!-- Galería de películas -->
+    <div id="galeria" class="row g-4 justify-content-center galeria">
+        <!-- ACCIÓN -->
+        <div class="col-md-3 col-sm-6 categoria-accion">
+            <div class="card bg-dark text-white h-100">
+                <img src="assets/images/movies/furia.jpg" alt="Furia en la Ciudad" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Furia en la Ciudad</h5>
+                    <a href="detalle.html" class="btn btn-danger">Ver detalles</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- DRAMA -->
+        <div class="col-md-3 col-sm-6 categoria-drama">
+            <div class="card bg-dark text-white h-100">
+                <img src="assets/images/movies/bajo.jpg" alt="bajo la  lluvia " class="card-img-top">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Bajo la Lluvia</h5>
+                    <a href="detalle.html" class="btn btn-danger">Ver detalles</a>
+                </div>
+            </div>
+        </div>
+        <!-- CIENCIA FICCIÓN -->
+        <div class="col-md-3 col-sm-6 categoria-ficcion">
+            <div class="card bg-dark text-white h-100">
+                <img src="assets/images/movies/horz.jpg" alt="horizonte 3000" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Horizonte 3000</h5>
+                    <a href="detalle.html" class="btn btn-danger">Ver detalles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

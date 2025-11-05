@@ -1,12 +1,30 @@
 .content {
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
+    width: 90%;
 
-    .item {
+    nav {
+        position: relative;
+        height: var(--height-nav);
         display: flex;
-        flex-direction: column;
-        padding-right: 12px;
+        flex-direction: row;
+        align-items: center;
+
+        background: var(--dark);
+        color: var(--light);
+
+        padding: 0 12px;
+        padding-left: 24px;
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            padding-right: 12px;
+            font-weight: bold;
+        }
+
+        a {
+            &:hover {
+                cursor: pointer;
+            }
+        }
     }
 }

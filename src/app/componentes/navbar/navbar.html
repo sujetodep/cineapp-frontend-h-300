@@ -1,6 +1,19 @@
 <div class="content">
-    <div class="item">Usuario</div>
-    <div class="item">Peliculas</div>
-    <div class="item">Salas</div>
-    <div class="item">Cartelera</div>
+    <nav>
+        <div class="item">
+            <a [routerLink]="['/login']" class="text-white px-2">Login</a>
+        </div>
+        <ng-content *ngIf="sessionService.sesionIniciada">
+            <div class="item">
+                <a [routerLink]="['/salas']" class="text-white px-2">Salas</a>
+            </div>
+            <div class="item">
+                <a [routerLink]="['/cartelera']" class="text-white px-2">Cartelera</a>
+            </div>
+            <div class="item">
+                <a [routerLink]="['/usuario']" class="text-white px-2">Usuario</a>
+            </div>
+            <a (click)="logout()">Salir</a>
+        </ng-content>
+    </nav>
 </div>
