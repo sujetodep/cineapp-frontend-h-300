@@ -6,26 +6,32 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { setLocalStorage } from '../../utils/storage';
 import { API_REST } from '../../utils/env';
 import { SessionService } from '../../servicios/session-service';
+import { BaseComponent } from '../base';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
-export class Login implements OnInit {
+export class Login extends BaseComponent implements OnInit {
   public form: FormGroup = {} as FormGroup;
 
   constructor(
     @Inject(HttpService) public httpService: HttpService,
-    @Inject(SessionService) public sessionService: SessionService
-  ) { }
+    @Inject(SessionService) public override sessionService: SessionService
+  ) {
+    super(sessionService);
+  }
 
-  ngOnInit() {
+  override ngOnInit() {
+    super.ngOnInit();
     this.form = new FormGroup(
       {
         correo: new FormControl(null,
@@ -48,7 +54,7 @@ export class Login implements OnInit {
         setLocalStorage("Authorization", 'Bearer ' + response.body.token);
         setLocalStorage("Usuario", response.body, true);
         this.sessionService.montarSesion();
-        window.location.href = "/";
+        this.sessionService.ir("/");
       }
     } catch (e: any) {
       if (e.status) {

@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { getLocalStorage, getSessionStorage } from '../utils/storage';
+import { getLocalStorage } from '../utils/storage';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SessionService {
   public usuario: any = {
+    _id: null,
     nombre: null,
     correo: null,
     rol: null
@@ -13,8 +15,14 @@ export class SessionService {
   public sesionIniciada = false;
   public authorization = getLocalStorage("Authorization");
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
     this.montarSesion();
+  }
+
+  ir(route: string) {
+    this.router.navigate([route]);
   }
 
   montarSesion() {
@@ -28,8 +36,8 @@ export class SessionService {
   }
 
   irALogin() {
-    if (!this.sesionIniciada) {
-      window.location.href = "/login";
+    if (!this.sesionIniciada && this.router.url !== "/login") {
+      this.ir("/login");
     }
   }
 }

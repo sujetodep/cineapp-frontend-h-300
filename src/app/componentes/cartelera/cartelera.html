@@ -1,45 +1,37 @@
 <section class="mt-5">
+    <div class="create" *ngIf="sessionService.usuario.rol === 'admin'">
+        <a [routerLink]="['/pelicula/crear']" class="text-white px-2">Crear película</a>
+        <a [routerLink]="['/sala/crear']" class="text-white px-2">Crear sala</a>
+        <a [routerLink]="['/cartelera/crear']" class="text-white px-2">Crear cartelera</a>
+    </div>
+
     <h3>Categorías destacadas</h3>
     <div class="d-flex justify-content-center gap-3 flex-wrap mt-3">
         <ng-content *ngFor="let genero of listService.generos">
-            <button class="btn btn-outline-danger" onclick="filtrarCategoria('accion')"
+            <button class="btn btn-outline-danger" (click)="filtrarCategoria(genero.codigo)"
                 title="{{genero.descripcion}}">{{genero.titulo}}</button>
         </ng-content>
     </div>
 
     <!-- Galería de películas -->
     <div id="galeria" class="row g-4 justify-content-center galeria">
-        <!-- ACCIÓN -->
-        <div class="col-md-3 col-sm-6 categoria-accion">
-            <div class="card bg-dark text-white h-100">
-                <img src="assets/images/movies/furia.jpg" alt="Furia en la Ciudad" class="card-img-top">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Furia en la Ciudad</h5>
-                    <a href="detalle.html" class="btn btn-danger">Ver detalles</a>
+        <ng-content *ngFor="let pelicula of peliculas">
+            <div class="col-md-3 col-sm-6 categoria-{{pelicula.genero}}">
+                <div class="card bg-dark text-white h-100">
+                    <img src="assets/images/movies/{{pelicula.portada}}" alt="{{pelicula.titulo}}" class="card-img-top">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{pelicula.titulo}}</h5>
+                        <div>
+                            <a [routerLink]="['/pelicula/detalle', pelicula._id]" class="btn btn-danger">Ver
+                                detalles</a>
+                            &nbsp;
+                            <a *ngIf="sessionService.usuario.rol === 'admin'"
+                                [routerLink]="['/pelicula/actualizar', pelicula._id]"
+                                class="btn btn-danger">Modificar</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-
-        <!-- DRAMA -->
-        <div class="col-md-3 col-sm-6 categoria-drama">
-            <div class="card bg-dark text-white h-100">
-                <img src="assets/images/movies/bajo.jpg" alt="bajo la  lluvia " class="card-img-top">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Bajo la Lluvia</h5>
-                    <a href="detalle.html" class="btn btn-danger">Ver detalles</a>
-                </div>
-            </div>
-        </div>
-        <!-- CIENCIA FICCIÓN -->
-        <div class="col-md-3 col-sm-6 categoria-ficcion">
-            <div class="card bg-dark text-white h-100">
-                <img src="assets/images/movies/horz.jpg" alt="horizonte 3000" class="card-img-top">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Horizonte 3000</h5>
-                    <a href="detalle.html" class="btn btn-danger">Ver detalles</a>
-                </div>
-            </div>
-        </div>
+        </ng-content>
     </div>
 </section>

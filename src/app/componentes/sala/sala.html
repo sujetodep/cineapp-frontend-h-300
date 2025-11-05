@@ -1,1 +1,11 @@
-<p>sala works!</p>
+<form [formGroup]="form">
+    <h1>{{title}}</h1>
+    <label>Nombre
+        <input type="text" formControlName="nombre" placeholder="Ingrese el nombre de la sala">
+    </label>
+    <label>Descripción
+        <textarea rows="4" formControlName="descripcion" placeholder="Ingrese la descripción"></textarea>
+    </label>
+
+    <input type="button" [disabled]="!form.valid" (click)="guardar()" value="Guardar">
+</form>

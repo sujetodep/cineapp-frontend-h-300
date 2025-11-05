@@ -1,0 +1,38 @@
+<section class="mt-5">
+    <div class="titulo">
+        <h5>
+            {{pelicula.titulo}}
+        </h5>
+    </div>
+    <img src="assets/images/movies/{{pelicula.portada}}" alt="{{pelicula.titulo}}" class="card-img-top">
+    <div class="genero">
+        Género: {{pelicula.genero}}
+    </div>
+    <div class="descripcion">
+        Sinápsis: {{pelicula.descripcion}}
+    </div>
+    <p>Horarios</p>
+    <div class="horarios">
+        <ng-content *ngFor="let cartelera of listService.carteleras">
+            <ng-content *ngIf="cartelera.pelicula === pelicula._id">
+                <ng-content *ngFor="let sala of listService.salas">
+                    <ng-content *ngIf="cartelera.sala === sala._id">
+                        <div class="sala">
+                            {{sala.nombre}}
+                        </div>
+                        <div class="dias">
+                            <ng-content *ngFor="let dia of listService.listProyecciones(cartelera.proyecciones)">
+                                <div class="item">{{dia}}</div>
+                            </ng-content>
+                        </div>
+                        <div class="horas">
+                            <ng-content *ngFor="let hora of listService.listHorarios(cartelera.horario)">
+                                <div class="item">{{hora}}</div>
+                            </ng-content>
+                        </div>
+                    </ng-content>
+                </ng-content>
+            </ng-content>
+        </ng-content>
+    </div>
+</section>

@@ -1,0 +1,39 @@
+section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: start;
+
+    .titulo,
+    .genero,
+    .descripcion,
+    .horarios,
+    p {
+        width: 100%;
+
+        h5 {
+            width: 100%;
+            margin-bottom: 32px;
+            font-size: 32px;
+            text-align: center;
+        }
+    }
+
+    p {
+        margin: 32px 0; 
+    }
+
+    .horarios {
+        justify-self: center;
+    }
+
+    p {
+        font-weight: bold;
+    }
+
+    img {
+        width: 50%;
+        object-fit: cover;
+        margin-bottom: 32px;
+    }
+}

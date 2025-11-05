@@ -14,22 +14,32 @@ form {
     }
 
     label {
-        font-size: 18px;
+        margin-top: 8px;
+        font-size: 16px;
         font-weight: bold;
+        color: var(--light);
+        letter-spacing: 3px;
     }
 
-    input {
+    input,
+    select,
+    textarea {
         width: 100%;
         margin: 2px;
         border: 1px solid var(--light);
         color: var(--dark) !important;
         padding: 8px;
-    }
 
-    input[type="text"],
-    input[type="password"] {
         height: 48px;
         border-radius: 5px;
+    }
+
+    select[multiple]{
+        height: auto;
+    }
+
+    textarea {
+        height: auto;
     }
 
     input[type="button"] {
@@ -43,5 +53,9 @@ form {
             color: var(--primary-contrast);
             cursor: pointer;
         }
+    }
+
+    a {
+        margin: 12px 0;
     }
 }

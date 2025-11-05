@@ -1,1 +1,22 @@
-<p>pelicula works!</p>
+<form [formGroup]="form">
+    <h1>{{title}}</h1>
+    <label>Título
+        <input type="text" formControlName="titulo" placeholder="Ingrese el título de la película">
+    </label>
+    <label>Extracto de la película
+        <textarea rows="4" formControlName="descripcion" placeholder="Ingrese el extracto o resumen"></textarea>
+    </label>
+    <label>Portada
+        <input type="text" formControlName="portada" placeholder="Nombre de la portada">
+    </label>
+    <label>Género
+        <select formControlName="genero">
+            <option value="{{null}}">- Seleccione -</option>
+            <ng-content *ngFor="let genero of listService.generos">
+                <option value="{{genero.codigo}}">{{genero.titulo}}</option>
+            </ng-content>
+        </select>
+    </label>
+
+    <input type="button" [disabled]="!form.valid" (click)="guardar()" value="Guardar">
+</form>

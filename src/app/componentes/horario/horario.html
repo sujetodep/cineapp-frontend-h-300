@@ -1,0 +1,41 @@
+<form [formGroup]="form">
+    <h1>{{title}}</h1>
+    <label>Película
+        <select  formControlName="pelicula">
+            <option value="{{null}}">- Seleccione -</option>
+            <ng-content *ngFor="let pelicula of listService.peliculas">
+                <option value="{{pelicula._id}}">{{pelicula.titulo}}</option>
+            </ng-content>
+        </select>
+    </label>
+    <label>Sala
+        <select  formControlName="sala">
+            <option value="{{null}}">- Seleccione -</option>
+            <ng-content *ngFor="let sala of listService.salas">
+                <option value="{{sala._id}}">{{sala.nombre}}</option>
+            </ng-content>
+        </select>
+    </label>
+    <label>Fecha inicio proyección
+        <input type="date" formControlName="fechaInicio" placeholder="Seleccione fecha inicial">
+    </label>
+    <label>Fecha fin proyección
+        <input type="date" formControlName="fechaFin" placeholder="Seleccione fecha final">
+    </label>
+    <label>Días de proyecciones
+        <select  formControlName="proyecciones" multiple>
+            <ng-content *ngFor="let proyeccion of listService.dias">
+                <option value="{{proyeccion.dia}}">{{proyeccion.nombre}}</option>
+            </ng-content>
+        </select>
+    </label>
+    <label>Horario
+        <select  formControlName="horario" multiple>
+            <ng-content *ngFor="let hora of listService.horas">
+                <option value="{{hora.hora}}">{{hora.nombre}}</option>
+            </ng-content>
+        </select>
+    </label>
+
+    <input type="button" [disabled]="!form.valid" (click)="guardar()" value="Guardar">
+</form>

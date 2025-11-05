@@ -1,0 +1,22 @@
+.sala,
+.dias,
+.horas {
+    width: 100% !important;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: start;
+
+    div.item {
+        width: auto;
+        font-size: 12px;
+        margin: 2px 0;
+    }
+
+    div.item::after {
+        content: '-';
+    }
+
+    div.item:last-child:after {
+        content: '';
+    }
+}

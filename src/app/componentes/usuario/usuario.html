@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-    <h1>Crear usuario</h1>
+    <h1>{{title}}</h1>
     <label>Nombre
         <input type="text" formControlName="nombre" placeholder="Ingrese su nombre completo">
     </label>
@@ -8,6 +8,13 @@
     </label>
     <label *ngIf="!sessionService.sesionIniciada">Contraseña
         <input type="password" formControlName="contrasenia" placeholder="Ingrese su contraseña">
+    </label>
+    <label>Rol
+        <select formControlName="rol">
+            <option value="{{null}}">- Seleccione -</option>
+            <option value="usuario">Usuario</option>
+            <option value="admin">Administrador</option>
+        </select>
     </label>
 
     <input type="button" [disabled]="!form.valid" (click)="guardar()" value="Guardar">

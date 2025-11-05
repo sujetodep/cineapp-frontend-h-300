@@ -7,5 +7,7 @@
         <input type="password" formControlName="contrasenia" placeholder="Ingrese su contraseña">
     </label>
 
+    <a [routerLink]="['/usuario/crear']" class="text-white px-2">Crear cuenta de usuario</a>
+
     <input type="button" [disabled]="!form.valid" (click)="login()" value="Login">
 </form>

@@ -5,6 +5,10 @@ export const setLocalStorage = (key: string, value: any, isJSON?: boolean) => {
     localStorage.setItem(key, value)
 }
 
+export const deleteLocalStorage = (key: string) => {
+    localStorage.removeItem(key);
+}
+
 export const getLocalStorage = (key: string, isJSON?: boolean): any => {
     let value = localStorage.getItem(key);
     if (value !== null) {

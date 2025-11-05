@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { getSessionStorage } from '../utils/storage';
 import { firstValueFrom } from 'rxjs';
 import { SessionService } from './session-service';
 
@@ -14,8 +13,13 @@ export class HttpService {
   ) { }
 
   async postAuth(url: string, body: any, headers: HttpHeaders): Promise<HttpResponse<any>> {
-    headers.set("Authorization", this.sessionService.authorization);
+    headers = headers.set("Authorization", this.sessionService.authorization);
     return this.post(url, body, headers);
+  }
+
+  async getAuth(url: string, headers: HttpHeaders) {
+    headers = headers.set("Authorization", this.sessionService.authorization);
+    this.get(url, headers);
   }
 
   async post(url: string, body: any, headers: HttpHeaders): Promise<HttpResponse<any>> {
@@ -44,10 +48,5 @@ export class HttpService {
     } catch (error) {
       throw error;
     }
-  }
-
-  async getAuth(url: string, headers: HttpHeaders) {
-    headers.set("Authorization", this.sessionService.authorization);
-    this.get(url, headers);
   }
 }

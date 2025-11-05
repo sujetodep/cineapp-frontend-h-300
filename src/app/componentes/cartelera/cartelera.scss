@@ -1,6 +1,24 @@
+    .create {
+        position: relative;
+    align-content: center;
+    margin: 8px 0;
+
+    a {
+        width: fit-content;
+        height: 32px;
+        border: 1px solid;
+        border-radius: 5px;
+        padding: 8px;
+        color: var(--dark) !important;
+        margin: 8px;
+
+        &:hover {
+            color: var(--primary) !important;
+        }
+    }
+}
+
 .card {
-    //background-color: #1f1f1f;
-    //color: white;
     transition: transform 0.3s;
 
     img {
